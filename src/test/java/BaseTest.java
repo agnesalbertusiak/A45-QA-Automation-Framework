@@ -94,4 +94,28 @@ public class BaseTest {
     }
 
 
+    public void login(String email, String te$tStudent1) {
+        WebElement emailField = driver.findElement(By.cssSelector("[type='email']"));
+        emailField.sendKeys(email);
+
+        WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
+        passwordField.sendKeys(te$tStudent1);
+
+        WebElement submitButton = driver.findElement(By.cssSelector("button[type='submit']"));
+        submitButton.click();
+    }
+
+    public void playSongBtn() throws InterruptedException {
+        WebElement playNextButton = driver.findElement(By.xpath("//i[@data-testid='play-next-btn']"));
+        WebElement playButton = driver.findElement(By.xpath("//span[@data-testid='play-btn']"));
+        playNextButton.click();
+        playButton.click();
+    }
+
+    public boolean isSongPlaying(){
+       WebElement soundBarMovement = driver.findElement(By.xpath("//div[@data-testid='sound-bar-play']"));
+       return soundBarMovement.isDisplayed();
+   }
+
+
 }
