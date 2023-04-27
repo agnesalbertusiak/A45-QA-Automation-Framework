@@ -5,15 +5,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.time.Duration;
 
 public class BaseTest {
     WebDriver driver;
+    public static String url = null;
 
     @BeforeSuite
     static void setupClass() {
@@ -21,12 +19,15 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    public void openBrowser() {
+    @Parameters({"BaseUrl"})
+    public void openBrowser(String BaseUrl) {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        url = BaseUrl;
+        driver.get(url);
 
     }
     @AfterMethod
@@ -94,4 +95,30 @@ public class BaseTest {
     }
 
 
+    public void login(String mail, String te$tStudent1) {
+        WebElement emailField = driver.findElement(By.cssSelector("[type='email']"));
+        emailField.sendKeys(mail);
+
+        WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
+        passwordField.sendKeys(te$tStudent1);
+
+        WebElement submitButton = driver.findElement(By.cssSelector("button[type='submit']"));
+        submitButton.click();
+    }
+
+    public void openPlaylist() {
+        WebElement openExistingPlaylist = driver.findElement(By.cssSelector(".playlist:nth-child(3)"));
+        openExistingPlaylist.click();
+    }
+
+    public void clickDeletePlaylistBtn() {
+        WebElement deletePlaylist = driver.findElement(By.cssSelector(".btn-delete-playlist"));
+        deletePlaylist.click();
+
+    }
+
+    public String getDeletedPlaylistMessage() {
+        WebElement notificationMessage = driver.findElement(By.cssSelector("div.success.show"));
+        return notificationMessage.getText();
+    }
 }
