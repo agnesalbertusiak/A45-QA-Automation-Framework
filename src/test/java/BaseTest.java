@@ -8,10 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.time.Duration;
 
@@ -20,6 +17,7 @@ public class BaseTest {
     WebDriverWait wait;
 
     Actions actions = null;
+public static String url = null;
 
     @BeforeSuite
     static void setupClass() {
@@ -27,13 +25,16 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    public void openBrowser() {
+    @Parameters({"BaseURL"})
+    public void openBrowser(String BaseURL) {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
 
         driver = new ChromeDriver(options);
         wait = new WebDriverWait(driver, Duration.ofSeconds(4));
         actions = new Actions(driver);
+        url = BaseURL;
+        navigateToPage();
     }
     @AfterMethod
     public void closeBrowser(){
@@ -43,6 +44,7 @@ public class BaseTest {
     public void navigateToPage() {
         String url= "http://bbb.testpro.io/";
         driver.get(url);
+
     }
 
 
