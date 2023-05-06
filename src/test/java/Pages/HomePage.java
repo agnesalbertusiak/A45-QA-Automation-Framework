@@ -9,8 +9,8 @@ public class HomePage extends BasePage {
     public HomePage (WebDriver givenDriver) {
         super(givenDriver);
     }
-    By secondPlaylist = By.cssSelector(".playlist:nth-child(4)");
-    By playlistNameField = By.cssSelector("[name='name']");
+    private By secondPlaylist = By.cssSelector(".playlist:nth-child(4)");
+    private By playlistNameField = By.cssSelector("[name='name']");
 
     public void doubleClickPlaylist() {doubleClick(secondPlaylist);}
     public void enterNewPlaylistName(String playlistName) {
