@@ -23,10 +23,10 @@ public class BasePage {
         actions = new Actions(driver);
         PageFactory.initElements(driver, this);
     }
-public WebElement findElement (By locator){
+protected WebElement findElement (By locator){
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 }
-public void doubleClick (By locator){
+protected void doubleClick (By locator){
         actions.doubleClick(findElement(locator)).perform();
 }
 }

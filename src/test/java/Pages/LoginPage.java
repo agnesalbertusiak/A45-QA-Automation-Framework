@@ -13,11 +13,11 @@ public class LoginPage extends BasePage{
 
 
     @FindBy (css = "[type='email']")
-    WebElement emailField;
+    private WebElement emailField;
     @FindBy (css = "[type='password']" )
-    WebElement passwordField;
+    private WebElement passwordField;
     @FindBy (css = "button[type='submit']" )
-    WebElement submitBtn;
+    private WebElement submitBtn;
    //private By emailField = By.cssSelector("[type='email']");
    //private  By passwordField = By.cssSelector("[type='password']");
     // private By submitBtn = By.cssSelector("button[type='submit']");
