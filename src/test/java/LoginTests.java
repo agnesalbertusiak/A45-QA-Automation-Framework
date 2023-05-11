@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 
 public class LoginTests extends BaseTest {
-    @Test
+//    @Test
     public static void LoginEmptyEmailPasswordTest() {
 
 //      Added ChromeOptions argument below to fix websocket error
@@ -21,5 +21,15 @@ public class LoginTests extends BaseTest {
         driver.get(url);
         Assert.assertEquals(driver.getCurrentUrl(), url);
         driver.quit();
+    }
+    @Test
+    public void loginValidEmailEmptyPasswordTest() {
+
+        navigateToPage();
+        enterEmail("demo@class.com");
+        enterPassword("");
+        clickSubmit();
+
+        Assert.assertEquals(driver.getCurrentUrl(), url); //https://bbb.testpro.io/
     }
 }
