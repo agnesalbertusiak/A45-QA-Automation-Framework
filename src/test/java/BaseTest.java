@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,7 +16,9 @@ import org.testng.annotations.*;
 
 import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URL;
 import java.time.Duration;
+import java.util.HashMap;
 
 public class BaseTest {
 
@@ -62,6 +65,8 @@ public static WebDriver driver;
             case "grid-chrome":
                 caps.setCapability("browserName", "chrome");
                 return driver = new RemoteWebDriver(URI.create(gridURL).toURL(),caps);
+            case "lambda":
+                return lambdaTest();
             default:
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
@@ -69,6 +74,27 @@ public static WebDriver driver;
                 return driver = new ChromeDriver(options);
         }
     }
+
+public static WebDriver lambdaTest () throws MalformedURLException {
+    String hubURL = "https://@hub.lambdatest.com/wd/hub";
+
+     String username =  "agnes.albertusiak";
+    String accessTocen = "vJ95q87Z8jOrZhj5P82UsnvTzM2mdHbhcA70wSx9HNY8ZcBUnM";
+
+
+    FirefoxOptions browserOptions = new FirefoxOptions();
+    browserOptions.setPlatformName("Windows 10");
+    browserOptions.setBrowserVersion("112.0");
+    HashMap<String, Object> ltOptions = new HashMap<String, Object>();
+    ltOptions.put("username", "agnes.albertusiak");
+    ltOptions.put("accessKey", "vJ95q87Z8jOrZhj5P82UsnvTzM2mdHbhcA70wSx9HNY8ZcBUnM");
+    ltOptions.put("project", "Untitled");
+    ltOptions.put("w3c", true);
+    ltOptions.put("plugin", "java-testNG");
+    browserOptions.setCapability("LT:Options", ltOptions);
+
+    return new RemoteWebDriver(new URL(hubURL), browserOptions);
+}
     @AfterMethod
     public void closeBrowser(){
         driver.quit();
