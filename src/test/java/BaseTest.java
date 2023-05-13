@@ -26,6 +26,7 @@ public class BaseTest {
     WebDriverWait wait;
 
     Actions actions = null;
+    public static ThreadLocal<WebDriver> threadDriver = null;
 public static String url = null;
 public static WebDriver driver;
 
@@ -41,11 +42,13 @@ public static WebDriver driver;
 //        ChromeOptions options = new ChromeOptions();
 //        options.addArguments("--remote-allow-origins=*");
 //        driver = new ChromeDriver(options);we need to remove or comment this, since we will use the browser factory pickBrowser()
+        threadDriver = new ThreadLocal<>();
         driver = pickBrowser(System.getProperty("browser"));
+        threadDriver.set(driver);
 
 
-        wait = new WebDriverWait(driver, Duration.ofSeconds(4));
-        actions = new Actions(driver);
+        wait = new WebDriverWait(getDriver(), Duration.ofSeconds(4));
+        actions = new Actions(getDriver());
         url = BaseURL;
         navigateToPage();
 
@@ -97,13 +100,17 @@ public static WebDriver lambdaTest () throws MalformedURLException {
 }
     @AfterMethod
     public void closeBrowser(){
-        driver.quit();
+        getDriver().quit();
+        threadDriver.remove();
 
+    }
+    public WebDriver getDriver (){
+        return threadDriver.get();
     }
 
     public void navigateToPage() {
         String url= "http://bbb.testpro.io/";
-        driver.get(url);
+        getDriver().get(url);
 
     }
 
