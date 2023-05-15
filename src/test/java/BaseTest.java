@@ -50,6 +50,7 @@ public static WebDriver driver;
         wait = new WebDriverWait(getDriver(), Duration.ofSeconds(4));
         actions = new Actions(getDriver());
         url = BaseURL;
+        getDriver().get(url);
         navigateToPage();
 
         }
@@ -85,9 +86,9 @@ public static WebDriver lambdaTest () throws MalformedURLException {
     String accessTocen = "vJ95q87Z8jOrZhj5P82UsnvTzM2mdHbhcA70wSx9HNY8ZcBUnM";
 
 
-    FirefoxOptions browserOptions = new FirefoxOptions();
+    ChromeOptions browserOptions = new ChromeOptions();
     browserOptions.setPlatformName("Windows 10");
-    browserOptions.setBrowserVersion("112.0");
+    browserOptions.setBrowserVersion("114.0");
     HashMap<String, Object> ltOptions = new HashMap<String, Object>();
     ltOptions.put("username", "agnes.albertusiak");
     ltOptions.put("accessKey", "vJ95q87Z8jOrZhj5P82UsnvTzM2mdHbhcA70wSx9HNY8ZcBUnM");

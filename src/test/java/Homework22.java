@@ -8,8 +8,8 @@ public class Homework22 extends BaseTest{
     @Test
     public void renamePlaylist (){
         String newPlaylistName = "SummerVibes";
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
 
         loginPage.login();
         homePage.doubleClickPlaylist();
