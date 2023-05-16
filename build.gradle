@@ -21,13 +21,3 @@ test {
         systemProperty "browser", System.getProperty("browser")
     }
 }
-test testSmoke(type: Test) {
-    useTestNG() {
-        suites "src/test/resources/smoke.xml"
-    }
-}
-test testRegression(type: Test) {
-    useTestNG() {
-        suites "src/test/resources/regression.xml"
-    }
-}
