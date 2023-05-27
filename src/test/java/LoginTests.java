@@ -33,4 +33,13 @@ public class LoginTests extends BaseTest {
 
       Assert.assertEquals(getDriver().getCurrentUrl(), url); //https://bbb.testpro.io/
     }
+    public void loginInvalidEmail() {
+        LoginPage loginPage = new LoginPage(getDriver());
+
+        loginPage.enterEmail("agnes23ska@gmail.com");
+        loginPage.enterPassword("te$tstudent1");
+        loginPage.clickSubmit();
+
+        Assert.assertEquals(getDriver().getCurrentUrl(), url); //https://bbb.testpro.io/
+    }
 }

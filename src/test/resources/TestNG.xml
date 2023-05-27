@@ -7,10 +7,8 @@
     <test name="Example Test" preserve-order="false">
         <classes>
 <!--            <class name="LoginTests"/>-->
-<!--           <class name="Homework17"/>-->
-<!--            <class name="Homework21"/>-->
             <class name="CucumberRunner"/>
-<!--            <class name ="Homework22"/>-->
+<!--            <class name ="PlaylistTests"/>-->
 <!--            <class name="BaseTest"/>-->
         </classes>
     </test>
