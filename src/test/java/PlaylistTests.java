@@ -14,9 +14,7 @@ public class PlaylistTests extends BaseTest{
 
         String newSongAddedNotification = "Added 1 song into";
 
-        loginPage.enterEmail("agnes.albertusiak@testpro.io");
-        loginPage.enterPassword("te$tStudent1");
-        loginPage.clickSubmit();
+        loginPage.login();
         homePage.searchSong("Epic Song");
         homePage.clickViewAllBtn();
         homePage.selectFirstSong();

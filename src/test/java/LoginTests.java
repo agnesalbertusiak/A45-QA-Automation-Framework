@@ -33,6 +33,8 @@ public class LoginTests extends BaseTest {
 
       Assert.assertEquals(getDriver().getCurrentUrl(), url); //https://bbb.testpro.io/
     }
+
+    @Test
     public void loginInvalidEmail() {
         LoginPage loginPage = new LoginPage(getDriver());
 
