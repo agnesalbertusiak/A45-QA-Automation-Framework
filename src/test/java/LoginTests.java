@@ -42,6 +42,29 @@ public class LoginTests extends BaseTest {
         loginPage.enterPassword("te$tstudent1");
         loginPage.clickSubmit();
 
-        Assert.assertEquals(getDriver().getCurrentUrl(), url); //https://bbb.testpro.io/
+        Assert.assertEquals(getDriver().getCurrentUrl(), url); //https://qa.koel.app/
+    }
+
+    @Test
+    public void succesfullLogin() {
+        LoginPage loginPage = new LoginPage(getDriver());
+
+        loginPage.enterEmail("agnieszka.albertusiak@gmail.com");
+        loginPage.enterPassword("te$t$tudent");
+        loginPage.clickSubmit();
+
+        Assert.assertEquals(getDriver().getCurrentUrl(), url);
+
+    }
+
+    @Test
+    public void loginEmptyLoginEmptyPassword() {
+        LoginPage loginPage = new LoginPage(getDriver());
+
+        loginPage.enterEmail("");
+        loginPage.enterPassword("");
+        loginPage.clickSubmit();
+
+        Assert.assertEquals(getDriver().getCurrentUrl(), url);
     }
 }

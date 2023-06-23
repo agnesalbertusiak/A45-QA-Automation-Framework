@@ -17,7 +17,7 @@ dependencies {
 
 test {
     useTestNG() {
-        suites "src/test/resources/${suite}.xml" //${suite} for Jenkins TestNG for rest//
+        suites "src/test/resources/TestNG.xml" //${suite} for Jenkins TestNG for rest//
         systemProperty "browser", System.getProperty("browser")
     }
 }
