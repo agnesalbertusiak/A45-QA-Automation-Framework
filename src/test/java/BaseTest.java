@@ -110,7 +110,7 @@ public static WebDriver lambdaTest () throws MalformedURLException {
     }
 
     public void navigateToPage() {
-        String url= "http://bbb.testpro.io/";
+        String url= "https://qa.koel.app/";
         getDriver().get(url);
 
     }
