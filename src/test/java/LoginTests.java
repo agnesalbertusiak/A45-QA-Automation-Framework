@@ -1,3 +1,4 @@
+import Pages.HomePage;
 import Pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -48,12 +49,12 @@ public class LoginTests extends BaseTest {
     @Test
     public void succesfullLogin() {
         LoginPage loginPage = new LoginPage(getDriver());
-
+        HomePage homePage = new HomePage(getDriver());
         loginPage.enterEmail("agnieszka.albertusiak@gmail.com");
         loginPage.enterPassword("te$t$tudent");
         loginPage.clickSubmit();
 
-        Assert.assertEquals(getDriver().getCurrentUrl(), url);
+        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
 
     }
 
@@ -67,4 +68,19 @@ public class LoginTests extends BaseTest {
 
         Assert.assertEquals(getDriver().getCurrentUrl(), url);
     }
+
+    @Test
+    public void newUserRegistrationSuccesfull() {
+    LoginPage loginPage = new LoginPage(getDriver());
+    HomePage homePage = new HomePage(getDriver());
+
+    loginPage.clickRegistration();
+    loginPage.enterEmail("darek23@gmail.com");
+    loginPage.clickRegisterBtn();
+
+        Assert.assertTrue(homePage.showRegistrationSucc().isDisplayed());
+    }
+
+
+
 }

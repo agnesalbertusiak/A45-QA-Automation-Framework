@@ -15,10 +15,18 @@ public class HomePage extends BasePage {
     private By secondPlaylist = By.cssSelector(".playlist:nth-child(4)");
     private By playlistNameField = By.cssSelector("[name='name']");
 
+    private By registrationSuccesfull = By.cssSelector("a[alt='Home page link']");
+    public WebElement showRegistrationSucc () {
+        return findElement(registrationSuccesfull);
+    }
+    private By userAvatar = By.cssSelector("img.avatar");
+    public WebElement getUserAvatar () {
+        return findElement(userAvatar);
+    }
+
     public void doubleClickPlaylist() {
         doubleClick(secondPlaylist);
     }
-
     public void enterNewPlaylistName(String playlistName) {
         findElement(playlistNameField).sendKeys(playlistName);
         findElement(playlistNameField).sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.BACK_SPACE));
@@ -50,5 +58,6 @@ public class HomePage extends BasePage {
         WebElement addToBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.btn-add-to")));
         addToBtn.click();
     }
+
 }
 
