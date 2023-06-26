@@ -19,6 +19,11 @@ public class HomePage extends BasePage {
     public WebElement showRegistrationSucc () {
         return findElement(registrationSuccesfull);
     }
+
+    public String getProfileUpdatedMsg(){
+        WebElement notificationMsg = driver.findElement(By.cssSelector("div.success.show"));
+        return notificationMsg.getText();
+    }
     private By userAvatar = By.cssSelector("img.avatar");
     public WebElement getUserAvatar () {
         return findElement(userAvatar);
@@ -59,5 +64,20 @@ public class HomePage extends BasePage {
         addToBtn.click();
     }
 
+    public void clickSave() throws InterruptedException{
+        WebElement saveBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.btn-submit")));
+        saveBtn.click();
+        Thread.sleep(5000);
+    }
+    public void logout() throws InterruptedException{
+        WebElement logoutBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".logout.control")));
+        logoutBtn.click();
+        Thread.sleep(5000);
+    }
+    public void clickEditUserProfile() throws InterruptedException{
+        WebElement userProfile = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[title='View/edit user profile']")));
+        userProfile.click();
+        Thread.sleep(5000);
+    }
 }
 

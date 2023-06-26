@@ -25,6 +25,7 @@ public class LoginPage extends BasePage{
 
 
     public void enterEmail (String email) {
+        emailField.clear();
         emailField.sendKeys(email);
     }
     public void enterPassword (String password) {
@@ -35,7 +36,7 @@ public class LoginPage extends BasePage{
     }
     public void login() {
         enterEmail("agnes.albertusiak@testpro.io");
-        enterPassword("te$tStudent1");
+        enterPassword("te$t$tudent");
         clickSubmit();
     }
     public void clickRegistration() {
