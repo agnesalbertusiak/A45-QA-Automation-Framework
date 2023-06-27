@@ -48,4 +48,13 @@ public class LoginPage extends BasePage{
         WebElement registrationBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("input[id='button']")));
         registrationBtn.click();
     }
+    public String getEmailFieldNotificationMessage(){
+        String validationMessage = emailField.getAttribute("validationMessage");
+        return validationMessage;
+    }
+
+    public String getPasswordFieldNotificationMessage(){
+        String validationMessage = passwordField.getAttribute("validationMessage");
+        return validationMessage;
+    }
 }

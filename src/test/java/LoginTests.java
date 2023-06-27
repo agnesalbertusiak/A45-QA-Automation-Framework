@@ -112,7 +112,7 @@ public class LoginTests extends BaseTest {
     }
 
     @Test
-    public void unsuccesfullLoginWithOldEmail(){
+    public void unsuccesfullLoginWithOldEmail() {
         LoginPage loginPage = new LoginPage(getDriver());
 
         loginPage.enterEmail("agnes.albertusiak@testpro.io");
@@ -139,7 +139,8 @@ public class LoginTests extends BaseTest {
         profilePreferences.enterNewPassword("te$t$tudent15");
         homePage.clickSave();
 
-        Assert.assertTrue(homePage.getProfileUpdatedMsg().contains(profileUpdatedMsg));}
+        Assert.assertTrue(homePage.getProfileUpdatedMsg().contains(profileUpdatedMsg));
+    }
 
     @Test
     public void userGoesBackToHisOldEmailAndPassword() throws InterruptedException {
@@ -158,8 +159,30 @@ public class LoginTests extends BaseTest {
         profilePreferences.enterNewPassword("te$t$tudent1");
         homePage.clickSave();
 
-        Assert.assertTrue(homePage.getProfileUpdatedMsg().contains(profileUpdatedMsg));}
-
+        Assert.assertTrue(homePage.getProfileUpdatedMsg().contains(profileUpdatedMsg));
     }
+
+    @Test
+    public void userCannotLoginWithInvalidEmailFormat() {
+        LoginPage loginPage = new LoginPage(getDriver());
+
+        loginPage.enterEmail("@testpro.io");
+        loginPage.enterPassword("te$t$tudent1");
+        loginPage.clickSubmit();
+
+        Assert.assertEquals(loginPage.getEmailFieldNotificationMessage(), "email format is incorrect");
+    }
+
+    @Test
+    public void loginInvalidPassword() {
+        LoginPage loginPage = new LoginPage(getDriver());
+
+        loginPage.enterEmail("agnes.albertusiak@testpro.io");
+        loginPage.enterPassword("te$tstudent12");
+        loginPage.clickSubmit();
+
+        Assert.assertEquals(loginPage.getPasswordFieldNotificationMessage(), "Password is incorrect");
+    }
+}
 
 
