@@ -29,4 +29,10 @@ protected WebElement findElement (By locator){
 protected void doubleClick (By locator){
         actions.doubleClick(findElement(locator)).perform();
 }
+
+public WebElement hoverFirstSong () {
+        WebElement hover1 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ol[@class='recently-added-album-list']//a[@href='#!/album/20']")));
+        actions.moveToElement(hover1).perform();
+        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ol[@class='recently-added-album-list']//a[@href='#!/album/20']")));
+}
 }

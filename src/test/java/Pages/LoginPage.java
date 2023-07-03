@@ -24,29 +24,35 @@ public class LoginPage extends BasePage{
     // private By submitBtn = By.cssSelector("button[type='submit']");
 
 
-    public void enterEmail (String email) {
+    public LoginPage enterEmail (String email) {
         emailField.clear();
         emailField.sendKeys(email);
+        return this;
     }
-    public void enterPassword (String password) {
+    public LoginPage enterPassword (String password) {
         passwordField.sendKeys(password);
+        return this;
     }
-    public void clickSubmit() {
+    public LoginPage clickSubmit() {
         submitBtn.click();
+        return this;
     }
-    public void login() {
+    public LoginPage login() {
         enterEmail("agnes.albertusiak@testpro.io");
-        enterPassword("te$t$tudent");
+        enterPassword("te$t$tudent1");
         clickSubmit();
+        return this;
     }
-    public void clickRegistration() {
+    public LoginPage clickRegistration() {
         WebElement registration = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[type='submit']")));
         registration.click();
+        return this;
     }
 
-    public void clickRegisterBtn() {
+    public LoginPage clickRegisterBtn() {
         WebElement registrationBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("input[id='button']")));
         registrationBtn.click();
+        return this;
     }
     public String getEmailFieldNotificationMessage(){
         String validationMessage = emailField.getAttribute("validationMessage");

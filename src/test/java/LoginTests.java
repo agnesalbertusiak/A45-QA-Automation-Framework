@@ -1,9 +1,6 @@
 import Pages.HomePage;
 import Pages.LoginPage;
-import Pages.ProfilePreferences;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+import Pages.ProfilePreferencesPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -31,14 +28,14 @@ public class LoginTests extends BaseTest {
         loginPage.enterPassword("");
         loginPage.clickSubmit();
 
-        Assert.assertEquals(getDriver().getCurrentUrl(), url); //https://bbb.testpro.io/
+        Assert.assertEquals(getDriver().getCurrentUrl(), url); //https://qa.koel.app/
     }
 
     @Test
     public void loginInvalidEmail() {
         LoginPage loginPage = new LoginPage(getDriver());
 
-        loginPage.enterEmail("agnes23ska@gmail.com");
+        loginPage.enterEmail("agnes230ska@gmail.com");
         loginPage.enterPassword("te$tstudent1");
         loginPage.clickSubmit();
 
@@ -75,7 +72,7 @@ public class LoginTests extends BaseTest {
         HomePage homePage = new HomePage(getDriver());
 
         loginPage.clickRegistration();
-        loginPage.enterEmail("darek25@gmail.com");
+        loginPage.enterEmail("dare09@gmail.com");
         loginPage.clickRegisterBtn();
 
         Assert.assertTrue(homePage.showRegistrationSucc().isDisplayed());
@@ -87,12 +84,12 @@ public class LoginTests extends BaseTest {
         String profileUpdatedMsg = "Profile updated.";
         LoginPage loginPage = new LoginPage(getDriver());
         HomePage homePage = new HomePage(getDriver());
-        ProfilePreferences profilePreferences = new ProfilePreferences(getDriver());
+        ProfilePreferencesPage profilePreferences = new ProfilePreferencesPage(getDriver());
 
         loginPage.login();
         homePage.clickEditUserProfile();
         profilePreferences.enterCurrentPassword("te$t$tudent1");
-        loginPage.enterEmail("aska237@gmail.com");
+        loginPage.enterEmail("aska20@gmail.com");
         homePage.clickSave();
 
         Assert.assertTrue(homePage.getProfileUpdatedMsg().contains(profileUpdatedMsg));
@@ -102,9 +99,9 @@ public class LoginTests extends BaseTest {
     public void loginWithUpdatedEmail() throws InterruptedException {
         LoginPage loginPage = new LoginPage(getDriver());
         HomePage homePage = new HomePage(getDriver());
-        ProfilePreferences profilePreferences = new ProfilePreferences(getDriver());
+        ProfilePreferencesPage profilePreferences = new ProfilePreferencesPage(getDriver());
 
-        loginPage.enterEmail("aska237@gmail.com");
+        loginPage.enterEmail("aska20@gmail.com");
         loginPage.enterPassword("te$t$tudent1");
         loginPage.clickSubmit();
 
@@ -129,14 +126,14 @@ public class LoginTests extends BaseTest {
 
         LoginPage loginPage = new LoginPage(getDriver());
         HomePage homePage = new HomePage(getDriver());
-        ProfilePreferences profilePreferences = new ProfilePreferences(getDriver());
+        ProfilePreferencesPage profilePreferences = new ProfilePreferencesPage(getDriver());
 
-        loginPage.enterEmail("aska237@gmail.com");
-        loginPage.enterPassword("te$t$tudent2");
+        loginPage.enterEmail("aska20@gmail.com");
+        loginPage.enterPassword("te$t$tudent1");
         loginPage.clickSubmit();
         homePage.clickEditUserProfile();
-        profilePreferences.enterCurrentPassword("te$t$tudent2");
-        profilePreferences.enterNewPassword("te$t$tudent15");
+        profilePreferences.enterCurrentPassword("te$t$tudent1");
+        profilePreferences.enterNewPassword("te$t$tudent14");
         homePage.clickSave();
 
         Assert.assertTrue(homePage.getProfileUpdatedMsg().contains(profileUpdatedMsg));
@@ -148,13 +145,13 @@ public class LoginTests extends BaseTest {
 
         LoginPage loginPage = new LoginPage(getDriver());
         HomePage homePage = new HomePage(getDriver());
-        ProfilePreferences profilePreferences = new ProfilePreferences(getDriver());
+        ProfilePreferencesPage profilePreferences = new ProfilePreferencesPage(getDriver());
 
-        loginPage.enterEmail("aska237@gmail.com");
-        loginPage.enterPassword("te$t$tudent15");
+        loginPage.enterEmail("aska20@gmail.com");
+        loginPage.enterPassword("te$t$tudent14");
         loginPage.clickSubmit();
         homePage.clickEditUserProfile();
-        profilePreferences.enterCurrentPassword("te$t$tudent15");
+        profilePreferences.enterCurrentPassword("te$t$tudent14");
         loginPage.enterEmail("agnes.albertusiak@testpro.io");
         profilePreferences.enterNewPassword("te$t$tudent1");
         homePage.clickSave();
