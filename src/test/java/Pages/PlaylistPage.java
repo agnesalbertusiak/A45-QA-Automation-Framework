@@ -22,6 +22,11 @@ public class PlaylistPage extends BasePage {
         clickPlaylistButton.click();
         return this;
     }
+    public PlaylistPage clickNewPlaylist () {
+        WebElement clickNewPlay = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("li[data-testid='playlist-context-menu-create-simple']")));
+        clickNewPlay.click();
+        return this;
+    }
 
 private By newPlaylistBtn = By.cssSelector("li[data-testid='playlist-context-menu-create-simple']");
     public WebElement getNewPlaylistBtn() {return (findElement(newPlaylistBtn));}
@@ -40,4 +45,11 @@ private By newPlaylistBtn = By.cssSelector("li[data-testid='playlist-context-men
 
     private By displayedSmartPlaylist = By.cssSelector(".playlist.playlist.smart");
     public WebElement getDisplayedSmartPlaylist() {return(findElement(displayedSmartPlaylist));}
+
+    private By successShow = By.cssSelector("div.success.show");
+    public WebElement getSuccessShowMsg(){return (findElement(successShow));}
+
+
+
 }
+

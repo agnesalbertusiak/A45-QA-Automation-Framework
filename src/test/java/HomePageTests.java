@@ -25,7 +25,6 @@ public class HomePageTests extends BaseTest{
         loginPage.enterEmail("darek67@gmail.com").enterPassword("te$t$tudent").clickSubmit();
 
         Assert.assertEquals(homePage.getWelcomeMessageText(), "Hello, Student!");
-
     }
 
     @Test void recentlyPlayedSongListEmptyIfNoSongsPlayed () {
@@ -43,7 +42,6 @@ public class HomePageTests extends BaseTest{
 
         loginPage.login();
         homePage.clickSong().doubleClickFirstSong().clickHomepagePanel();
-
         Assert.assertTrue(homePage.getRecentlyPlayedSongs().isDisplayed());
 
     }
