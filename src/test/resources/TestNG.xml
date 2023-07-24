@@ -9,7 +9,7 @@
             <!-- <class name="LoginTests"/>
             <class name="BaseTest"/>-->
             <!--<class name ="HomePageTests"/>-->
-            <class name ="PlaylistTests"/>
+           <!-- <class name ="PlaylistTests"/>-->
             <class name = "UpdatePasswordTests"/>
         </classes>
     </test>

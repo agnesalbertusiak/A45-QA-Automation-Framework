@@ -74,10 +74,13 @@ public class HomePage extends BasePage {
         return findElement(registrationSuccesfull);
     }
 
-    public String getProfileUpdatedMsg(){
-        WebElement notificationMsg = driver.findElement(By.cssSelector("div.success.show"));
-        return notificationMsg.getText();
-    }
+
+    private By notificationMsg = By.cssSelector("div.success.show");
+    public WebElement getProfileUpdatedMsg() {return findElement(notificationMsg);}
+    private By errorMsg = By.cssSelector("div.error.show");
+
+    public WebElement getProfileErrorMsg() {return findElement(errorMsg);}
+
     private By userAvatar = By.cssSelector("img.avatar");
     public WebElement getUserAvatar () {
         return findElement(userAvatar);

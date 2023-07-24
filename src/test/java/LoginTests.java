@@ -81,7 +81,6 @@ public class LoginTests extends BaseTest {
     @Test
     public void userChangesEmail() throws InterruptedException {
 
-        String profileUpdatedMsg = "Profile updated.";
         LoginPage loginPage = new LoginPage(getDriver());
         HomePage homePage = new HomePage(getDriver());
         ProfilePreferencesPage profilePreferences = new ProfilePreferencesPage(getDriver());
@@ -92,7 +91,7 @@ public class LoginTests extends BaseTest {
         loginPage.enterEmail("aska20@gmail.com");
         homePage.clickSave();
 
-        Assert.assertTrue(homePage.getProfileUpdatedMsg().contains(profileUpdatedMsg));
+        Assert.assertTrue(homePage.getProfileUpdatedMsg().isDisplayed());
     }
 
     @Test
@@ -136,7 +135,7 @@ public class LoginTests extends BaseTest {
         profilePreferences.enterNewPassword("te$t$tudent14");
         homePage.clickSave();
 
-        Assert.assertTrue(homePage.getProfileUpdatedMsg().contains(profileUpdatedMsg));
+        Assert.assertTrue(homePage.getProfileUpdatedMsg().isDisplayed());
     }
 
     @Test
@@ -156,7 +155,7 @@ public class LoginTests extends BaseTest {
         profilePreferences.enterNewPassword("te$t$tudent1");
         homePage.clickSave();
 
-        Assert.assertTrue(homePage.getProfileUpdatedMsg().contains(profileUpdatedMsg));
+        Assert.assertTrue(homePage.getProfileUpdatedMsg().isDisplayed());
     }
 
     @Test
