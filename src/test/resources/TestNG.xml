@@ -11,6 +11,7 @@
             <!--<class name ="HomePageTests"/>-->
            <!-- <class name ="PlaylistTests"/>-->
             <class name = "UpdatePasswordTests"/>
+            <class name = "FavoritesTests"/>
         </classes>
     </test>
 </suite>

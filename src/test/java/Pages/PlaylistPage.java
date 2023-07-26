@@ -22,7 +22,8 @@ public class PlaylistPage extends BasePage {
         clickPlaylistButton.click();
         return this;
     }
-    public PlaylistPage clickNewPlaylist () {
+
+    public PlaylistPage clickNewPlaylist() {
         WebElement clickNewPlay = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("li[data-testid='playlist-context-menu-create-simple']")));
         clickNewPlay.click();
         return this;
@@ -49,7 +50,13 @@ private By newPlaylistBtn = By.cssSelector("li[data-testid='playlist-context-men
     private By successShow = By.cssSelector("div.success.show");
     public WebElement getSuccessShowMsg(){return (findElement(successShow));}
 
+    private By noFavoriteYet = By.cssSelector("i.fa.fa-frown-o");
+    public WebElement notFavoritesYet(){return (findElement(noFavoriteYet));}
 
+    private By firstSongDisplayed = By.xpath("//td[contains(text(), 'Epic Song')]");
+    public WebElement firstSongIsDisplayed() {return (findElement(firstSongDisplayed));}
 
+    private By secondSongDisplayed = By.xpath("//td[contains(text(), 'Dark Days')]");
+    public WebElement secondSongIsDisplayed() {return (findElement(secondSongDisplayed));}
 }
 

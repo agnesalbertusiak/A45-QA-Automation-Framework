@@ -16,6 +16,4 @@ public class XpathLocators {
     String volumeRange = "//span[@id='volume']";
 
     String playButton = "//span[@title='Play or resume']";
-
-
 }

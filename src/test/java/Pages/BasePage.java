@@ -29,6 +29,11 @@ protected WebElement findElement (By locator){
 protected void doubleClick (By locator){
         actions.doubleClick(findElement(locator)).perform();
 }
+    public BasePage clickLikeBtn() {
+        WebElement clickLikeButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".fa.fa-heart-o")));
+        clickLikeButton.click();
+        return this;
+    }
 
 public WebElement hoverFirstSong () {
         WebElement hover1 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ol[@class='recently-added-album-list']//a[@href='#!/album/20']")));

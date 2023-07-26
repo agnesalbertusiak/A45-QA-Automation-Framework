@@ -40,56 +40,76 @@ public class HomePage extends BasePage {
     private By albumsPage = By.cssSelector("a[href='#!/albums']");
     private By artistsPage = By.cssSelector("a[href='#!/artists']");
 
-    public WebElement getHomePage () {
+    public WebElement getHomePage() {
         return findElement(homePage);
     }
 
-    public WebElement getSearchField () {
+    public WebElement getSearchField() {
         return findElement(searchField);
     }
 
-    public WebElement getSongResults () {
+    public WebElement getSongResults() {
         return findElement(songResults);
-        }
+    }
 
-        public WebElement getDownloadIcon () {return findElement(downoladIcon);}
-    public WebElement getShuffleIcon () {return findElement(shuuffleIcon);}
-    public WebElement getRecentlyPlayedSongs () {
+    public WebElement getDownloadIcon() {
+        return findElement(downoladIcon);
+    }
+
+    public WebElement getShuffleIcon() {
+        return findElement(shuuffleIcon);
+    }
+
+    public WebElement getRecentlyPlayedSongs() {
         return findElement(isRecentlyPlayedSongDisplayed);
     }
-    public WebElement getRecentlyAddedSongs () {
+
+    public WebElement getRecentlyAddedSongs() {
         return findElement(recentlyAddedSongs);
     }
-    public WebElement getRecentlyAddedAlbums () {
+
+    public WebElement getRecentlyAddedAlbums() {
         return findElement(recentlyAddedAlbums);
     }
-    public WebElement getViewAllBtn () {
+
+    public WebElement getViewAllBtn() {
         return findElement(viewAllBtn);
     }
-    public WebElement getRecentlyPlayedSongPanelEmpty () {
+
+    public WebElement getRecentlyPlayedSongPanelEmpty() {
         return findElement(recentlyPlayedSongPanelEmpty);
     }
 
-    public WebElement showRegistrationSucc () {
+    public WebElement showRegistrationSucc() {
         return findElement(registrationSuccesfull);
     }
 
 
     private By notificationMsg = By.cssSelector("div.success.show");
-    public WebElement getProfileUpdatedMsg() {return findElement(notificationMsg);}
+
+    public WebElement getProfileUpdatedMsg() {
+        return findElement(notificationMsg);
+    }
+
     private By errorMsg = By.cssSelector("div.error.show");
 
-    public WebElement getProfileErrorMsg() {return findElement(errorMsg);}
+    public WebElement getProfileErrorMsg() {
+        return findElement(errorMsg);
+    }
 
     private By userAvatar = By.cssSelector("img.avatar");
-    public WebElement getUserAvatar () {
+
+    public WebElement getUserAvatar() {
         return findElement(userAvatar);
     }
 
     private By welcomeText = By.cssSelector("#homeWrapper header h1");
-    public WebElement welcomeMessage () {return findElement(welcomeText);}
 
-    public String getWelcomeMessageText(){
+    public WebElement welcomeMessage() {
+        return findElement(welcomeText);
+    }
+
+    public String getWelcomeMessageText() {
         String validationMessage = welcomeMessage().getAttribute("validationMessage");
         return validationMessage;
     }
@@ -103,6 +123,7 @@ public class HomePage extends BasePage {
         doubleClick(firstSong);
         return this;
     }
+
     public HomePage enterNewPlaylistName(String playlistName) {
         findElement(playlistNameField).sendKeys(playlistName);
         findElement(playlistNameField).sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.BACK_SPACE));
@@ -135,6 +156,13 @@ public class HomePage extends BasePage {
         return this;
     }
 
+    public HomePage rightClickFirstSong() {
+        WebElement rightClick = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("section#songResultsWrapper tr.song-item td.title")));
+        actions.contextClick(rightClick).perform();
+        return this;
+    }
+
+
     public HomePage firstSong() {
         WebElement clickSong = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("section#albumWrapper  tr.song-item td.title")));
         clickSong.click();
@@ -143,6 +171,12 @@ public class HomePage extends BasePage {
     public HomePage clickAddToBtn(){
         WebElement addToBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.btn-add-to")));
         addToBtn.click();
+        return this;
+    }
+
+    public HomePage clickDownload() {
+        WebElement downloadBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("li.download")));
+        downloadBtn.click();
         return this;
     }
 
@@ -161,11 +195,15 @@ public class HomePage extends BasePage {
         logoutBtn.click();
         return this;
 
-
     }
     public HomePage clickEditUserProfile() {
         WebElement userProfile = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[title='View/edit user profile']")));
         userProfile.click();
+        return this;
+    }
+    public HomePage clickLikeUnlike(){
+        WebElement likeUnlikeBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("i.fa.fa-heart-o")));
+        likeUnlikeBtn.click();
         return this;
     }
     public HomePage clickSong() {
@@ -184,7 +222,6 @@ public class HomePage extends BasePage {
             playButton.click();
             playButton.click();
             return this;
-
         }
     }
 
