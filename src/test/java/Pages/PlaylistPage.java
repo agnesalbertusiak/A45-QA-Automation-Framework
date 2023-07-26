@@ -38,6 +38,17 @@ private By newPlaylistBtn = By.cssSelector("li[data-testid='playlist-context-men
     private By favoritesBtn = By.cssSelector("a[href='#!/favorites']");
     public WebElement getFavoriteBtn() {return (findElement(favoritesBtn));}
 
+    public PlaylistPage clickFavouritsTab(){
+        WebElement favoriteTab = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("li.playlist.favorites")));
+        favoriteTab.click();
+        return this;
+    }
+    public PlaylistPage clickDownloadAllSongsBtn(){
+        WebElement downloadAllSongs = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[title='Download all songs in playlist']")));
+        downloadAllSongs.click();
+        return this;
+    }
+
     private By recentlyPlayed = By.cssSelector("li.playlist.recently-played");
     public WebElement getRecentlyPlayed() {return (findElement(recentlyPlayed));}
 
@@ -53,10 +64,12 @@ private By newPlaylistBtn = By.cssSelector("li[data-testid='playlist-context-men
     private By noFavoriteYet = By.cssSelector("i.fa.fa-frown-o");
     public WebElement notFavoritesYet(){return (findElement(noFavoriteYet));}
 
-    private By firstSongDisplayed = By.xpath("//td[contains(text(), 'Epic Song')]");
+    private By firstSongDisplayed = By.xpath("//td[contains(text(), 'HoliznaCC0 - Lost In The City')]");
     public WebElement firstSongIsDisplayed() {return (findElement(firstSongDisplayed));}
 
-    private By secondSongDisplayed = By.xpath("//td[contains(text(), 'Dark Days')]");
+    private By secondSongDisplayed = By.xpath("//td[contains(text(), 'DHoliznaCC0 - Lost In The City')]");
     public WebElement secondSongIsDisplayed() {return (findElement(secondSongDisplayed));}
+
+
 }
 

@@ -14,4 +14,15 @@ public class AllSongsPage extends BasePage{
     private By allSongsPage = By.cssSelector("a[href='#!/songs']");
     public WebElement getAllSongsPage() {return (findElement(allSongsPage)); }
 
+
+    public AllSongsPage clickAllSongsPage() {
+        WebElement clickAllSongsP = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href='#!/songs']")));
+        clickAllSongsP.click();
+        return this;
+    }
+    public AllSongsPage clickSong() {
+        WebElement clickOnASong = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td [contains (text(), 'Ketsa - Beautiful')]")));
+        clickOnASong.click();
+        return this;
+    }
 }

@@ -26,13 +26,11 @@ public class FavoritesTests extends BaseTest {
         loginPage.login();
         allSongsPage.hoverFirstSong();
         basePage.clickLikeBtn();
-        homePage.searchSong("Dark Days").clickViewAllBtn().selectFirstSong().clickLikeUnlike();
-        Assert.assertTrue(playlistPage.secondSongIsDisplayed().isDisplayed());
-        Assert.assertTrue(playlistPage.firstSongIsDisplayed().isDisplayed());
+        Assert.assertTrue(playlistPage.clickFavouritsTab().firstSongIsDisplayed().isDisplayed());
+
 
     }
     @Test
-
     public void userIsAbleToDownloadASong(){
 
         LoginPage loginPage = new LoginPage(getDriver());
@@ -40,5 +38,15 @@ public class FavoritesTests extends BaseTest {
 
         loginPage.login();
         homePage.searchSong("Lobo").clickViewAllBtn().rightClickFirstSong().clickDownload();
+    }
+
+    @Test
+    public void userIsAbleToDownloadAllSongsFromFavorites() {
+        LoginPage loginPage = new LoginPage(getDriver());
+        PlaylistPage playlistPage = new PlaylistPage(getDriver());
+
+        loginPage.login();
+        playlistPage.clickFavouritsTab().clickDownloadAllSongsBtn();
+
     }
 }
